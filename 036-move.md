@@ -11,7 +11,7 @@ T source ;
 // コピー構築
 T a = source ;
 T b( source ) ;
-T c{ source ) ;
+T c{ source } ;
 
 T e ;
 // コピー代入
@@ -36,7 +36,7 @@ T source ;
 // ムーブ構築
 T a = std::move(source) ;
 T b( std::move(source) ) ;
-T c{ std::move(source) ) ;
+T c{ std::move(source) } ;
 
 T e ;
 // ムーブ代入
@@ -72,7 +72,7 @@ int main()
     v = std::move(w) ;
     // このあとwは使えない
 
-    std::for_each( std::begin(v), std::end(v), 
+    std::for_each( std::begin(v), std::end(v),
         []( auto x ){
             std::cout << x ;
         } ) ;
@@ -116,7 +116,7 @@ int c = std::move(a) ;
 そのため、`int`や`double`のムーブでは、ムーブ後もムーブ元のオブジェクトをそのまま使うことができるし、値も変わらない。
 
 ~~~cpp
-int a = 123 
+int a = 123
 int b = std::move(a) ;
 // 123
 std::cout << a ;
@@ -212,7 +212,7 @@ public :
 ~~~cpp
 template < typename T >
 dynamic_array<T>::dynamic_array( const dynamic_array & r )
-    : first( new T[r.size()] ), last( first + r.size() ) 
+    : first( new T[r.size()] ), last( first + r.size() )
 {
     std::copy( r.begin(), r.end(), begin() ) ;
 }
@@ -223,7 +223,7 @@ dynamic_array<T>::dynamic_array( const dynamic_array & r )
 ~~~cpp
  < typename T >
 dynamic_array<T>::dynamic_array( const dynamic_array & r )
-    : first( r.first ), last( r.last ) 
+    : first( r.first ), last( r.last )
 {
     // 何もしない
 }
@@ -247,7 +247,7 @@ int main()
 ~~~cpp
  < typename T >
 dynamic_array<T>::dynamic_array( dynamic_array & r )
-    : first( r.first ), last( r.last ) 
+    : first( r.first ), last( r.last )
 {
     // コピー元を変更
     r.first = nullptr ;
@@ -270,7 +270,7 @@ int main()
     std::vector<int> w = v ;
 
     // これがエラーだとしたら？
-    v[0] = 0 ; 
+    v[0] = 0 ;
 }
 ~~~
 
